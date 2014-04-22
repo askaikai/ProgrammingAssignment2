@@ -1,15 +1,37 @@
-## Put comments here that give an overall description of what your
-## functions do
+## these functions cache the inverse of a matrix
+## 
+## history
+## 04/20/14 ai wrote based on the examples on: https://class.coursera.org/rprog-002/human_grading/view/courses/972078/assessments/3/submissions
 
-## Write a short comment describing this function
-
+## this fxn creates the object that can cache the input matrix
 makeCacheMatrix <- function(x = matrix()) {
-
+  m <- NULL
+  set <- function(y) {
+    x <<- y
+    m <<- NULL
+  }
+  get <- function() x
+  setInverse <- function(solve) m <<- solve
+  getInverse <- function() m
+  list(set = set, get = get,
+       setInverse = setInverse,
+       getInverse = getInverse)
 }
 
 
-## Write a short comment describing this function
-
+## this fxn computes the inverse of the input matrix, based on the object created 
+## in makeCacheMatrix. 
+## if the inverse has already been calculted, then this fxn should retrieve it from
+## the cache.
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+  
+  m <- x$getInverse() # does it exist in cache? 
+  if(!is.null(m)) {
+    message("getting cached data") 
+    return(m) # if it does exist, look no further. just retun this value
+  }
+  data <- x$get() # if not cached...
+  m <- solve(data, ...) # calculate here and ...
+  x$setInverse(m) # save the result in x's cache
+  m
 }
