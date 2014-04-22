@@ -1,4 +1,6 @@
-## these functions cache the inverse of a matrix
+## these functions could be used to cache and/or calculate the inverse of an input matrix.
+## if the inverse is already in the memory, the fxn returns the inverse from there, 
+## but if no in the memory, it computes the inverse of the input matrix. 
 ## 
 ## history
 ## 04/20/14 ai wrote based on the examples on: https://class.coursera.org/rprog-002/human_grading/view/courses/972078/assessments/3/submissions
